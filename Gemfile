@@ -6,6 +6,9 @@ gem 'pg'
 # Sinatra driver
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem "simple_oauth"
+gem "daybreak"
+gem "json"
 
 # Use Thin for our web server
 gem 'thin'

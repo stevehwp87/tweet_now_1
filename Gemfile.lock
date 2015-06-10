@@ -1,29 +1,32 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (3.2.12)
-      activesupport (= 3.2.12)
-      builder (~> 3.0.0)
-    activerecord (3.2.12)
-      activemodel (= 3.2.12)
-      activesupport (= 3.2.12)
-      arel (~> 3.0.2)
-      tzinfo (~> 0.3.29)
-    activesupport (3.2.12)
-      i18n (~> 0.6)
-      multi_json (~> 1.0)
+    activemodel (4.2.1)
+      activesupport (= 4.2.1)
+      builder (~> 3.1)
+    activerecord (4.2.1)
+      activemodel (= 4.2.1)
+      activesupport (= 4.2.1)
+      arel (~> 6.0)
+    activesupport (4.2.1)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
     addressable (2.3.8)
-    arel (3.0.2)
-    backports (2.6.1)
+    arel (6.0.0)
+    backports (3.6.4)
     buftok (0.2.0)
-    builder (3.0.4)
+    builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
     columnize (0.9.0)
     daemons (1.1.9)
+    daybreak (0.3.0)
     diff-lcs (1.1.3)
     equalizer (0.0.11)
-    eventmachine (1.0.0)
+    eventmachine (1.0.7)
     faker (1.1.2)
       i18n (~> 0.5)
     faraday (0.9.1)
@@ -31,18 +34,19 @@ GEM
     http (0.6.4)
       http_parser.rb (~> 0.6.0)
     http_parser.rb (0.6.0)
-    i18n (0.6.1)
+    i18n (0.7.0)
     json (1.8.3)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
-    multi_json (1.6.1)
+    minitest (5.7.0)
+    multi_json (1.11.0)
     multipart-post (2.0.0)
     naught (1.0.0)
-    pg (0.14.1)
-    rack (1.5.2)
-    rack-protection (1.3.2)
+    pg (0.18.2)
+    rack (1.6.1)
+    rack-protection (1.5.3)
       rack
-    rack-test (0.6.2)
+    rack-test (0.6.3)
       rack (>= 1.0)
     rake (10.0.3)
     rspec (2.12.0)
@@ -56,23 +60,23 @@ GEM
     shotgun (0.9)
       rack (>= 1.0)
     simple_oauth (0.3.1)
-    sinatra (1.3.4)
+    sinatra (1.4.6)
       rack (~> 1.4)
-      rack-protection (~> 1.3)
-      tilt (~> 1.3, >= 1.3.3)
-    sinatra-contrib (1.3.1)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
+    sinatra-contrib (1.4.4)
       backports (>= 2.0)
-      eventmachine
+      multi_json
       rack-protection
       rack-test
-      sinatra (~> 1.3.0)
-      tilt (~> 1.3)
+      sinatra (~> 1.4.0)
+      tilt (>= 1.3, < 3)
     thin (1.5.0)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     thread_safe (0.3.5)
-    tilt (1.3.3)
+    tilt (2.0.1)
     twitter (5.14.0)
       addressable (~> 2.3)
       buftok (~> 0.2.0)
@@ -84,7 +88,8 @@ GEM
       memoizable (~> 0.4.0)
       naught (~> 1.0)
       simple_oauth (~> 0.3.0)
-    tzinfo (0.3.35)
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
 
 PLATFORMS
   ruby
@@ -93,11 +98,14 @@ DEPENDENCIES
   activerecord
   activesupport
   byebug
+  daybreak
   faker
+  json
   pg
   rake
   rspec
   shotgun
+  simple_oauth
   sinatra
   sinatra-contrib
   thin

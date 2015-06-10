@@ -10,7 +10,10 @@ require 'rubygems'
 
 require 'uri'
 require 'pathname'
-
+require 'daybreak'
+require 'yaml'
+require 'uri'
+require 'json'
 require 'pg'
 require 'active_record'
 require 'logger'
@@ -31,16 +34,26 @@ APP_NAME = APP_ROOT.basename.to_s
 Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
 Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
+DATABASE = File.expand_path(File.dirname(__FILE__) + '/db/signin.db')
+TWITTER = File.expand_path(File.dirname(__FILE__) + "/twitter_oauth.yml")
+# TWITTER = YAML::load_file(TWITTER_PATH)
+API_KEYS = YAML::load(File.open(TWITTER))
 # Set up the database and models
+# byebug
 require APP_ROOT.join('config', 'database')
+require APP_ROOT.join('lib', 'twitter_sign_in.rb')
 
-API_KEYS = YAML::load(File.open('config/tweet.yaml'))
+# $client = Twitter::REST::Client.new do |config|
+# config.consumer_key = TWITTER["consumer_key"]
+# config.consumer_secret = TWITTER["consumer_secret"]
+# end
 
-$client = Twitter::REST::Client.new do |config|
-config.consumer_key = API_KEYS["consumer_key"]
-config.consumer_secret = API_KEYS["consumer_secret"]
-config.access_token = API_KEYS["access_token"]
-config.access_token_secret = API_KEYS["access_token_secret"]
+configure do
+  # the usage of sessions here is very simple, in your app you should implement a proper storage for it.
+  use Rack::Session::Cookie, :key => 'rack.session',
+                             :path => '/',
+                             :secret => 'your_secret'
+  # setting a random secret
 end
 
-
+TwitterSignIn.configure
