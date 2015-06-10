@@ -5,7 +5,7 @@ end
 
 post '/tweet' do
   # $client.user_timeline(self.username)
-  # byebug
+  byebug
   $client.update(params[:tweet])
   redirect to '/'
 end

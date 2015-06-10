@@ -6,13 +6,14 @@ $(document).ready(function() {
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
   // debugger;
   $("form").submit(function(e){
-
+    var text = $("form").serialize();
     $("form").hide();
     $("div.container").append("<p><img src='/js/ajax-loader.gif'/>Tweeting to Pinpin's little bird...</p>");
     e.preventDefault();
     $.ajax({
       type: "post",
       url: "/tweet",
+      data: text,
       success: function(){
         $("p").remove();
         // console.log("yeah");
